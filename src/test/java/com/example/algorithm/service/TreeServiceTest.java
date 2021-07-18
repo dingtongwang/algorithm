@@ -94,6 +94,16 @@ class TreeServiceTest {
     assertEquals(Arrays.asList(8, 9, 4, 10, 11, 5, 2, 12, 13, 6, 14, 15, 7, 3, 1), result);
   }
 
+  @Test
+  void should_return_true_result_when_call_is_symmetric_given_symmetric_tree() {
+    assertTrue(TreeService.isSymmetric(createSymmetricTree()));
+  }
+
+  @Test
+  void should_return_false_result_when_call_is_symmetric_given_non_symmetric_tree() {
+    assertFalse(TreeService.isSymmetric(createNonSymmetricTree()));
+  }
+
   private static TreeNode createTree() {
     TreeNode node6 = new TreeNode(6);
     TreeNode node7 = new TreeNode(7);
@@ -123,5 +133,27 @@ class TreeServiceTest {
     TreeNode node2 = new TreeNode(2, node3, node4);
 
     return new TreeNode(1, node2, null);
+  }
+
+  private TreeNode createSymmetricTree() {
+    TreeNode node4 = new TreeNode(3);
+    TreeNode node5 = new TreeNode(4);
+    TreeNode node6 = new TreeNode(4);
+    TreeNode node7 = new TreeNode(3);
+
+    TreeNode node2 = new TreeNode(2, node4, node5);
+    TreeNode node3 = new TreeNode(2, node6, node7);
+
+    return new TreeNode(1, node2, node3);
+  }
+
+  private TreeNode createNonSymmetricTree() {
+    TreeNode node4 = new TreeNode(3);
+    TreeNode node5 = new TreeNode(3);
+
+    TreeNode node2 = new TreeNode(2, null, node4);
+    TreeNode node3 = new TreeNode(2, null, node5);
+
+    return new TreeNode(1, node2, node3);
   }
 }
