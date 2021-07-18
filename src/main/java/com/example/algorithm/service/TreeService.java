@@ -19,6 +19,32 @@ public class TreeService {
     return Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight())) + 1;
   }
 
+  /** 
+   * @description: 平衡树——左右子树高度差小于等于 1
+   * @Param: [root]
+   * @return: boolean 
+   * @author: tongwang.ding
+   * @date: 2021-07-18 
+   */
+  public static boolean isBalanced(TreeNode root) {
+    if (root == null) {
+      return true;
+    }
+
+    boolean result = checkDepth(root);
+    if (result) {
+      return isBalanced(root.getLeft()) && isBalanced(root.getRight());
+    }
+
+    return false;
+  }
+
+  private static boolean checkDepth(TreeNode root) {
+    int l = maxDepth(root.getLeft());
+    int r = maxDepth(root.getRight());
+    return Math.abs(l - r) <= 1;
+  }
+
   public static List<Integer> preOrderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList();
     preOrder(result, root);
