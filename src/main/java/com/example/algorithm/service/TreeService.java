@@ -63,30 +63,19 @@ public class TreeService {
       return true;
     }
 
-    if (root.getLeft() != null && root.getRight() == null) {
+    return isSymmetric(root.getLeft(), root.getRight());
+  }
+
+  private static boolean isSymmetric(TreeNode left, TreeNode right) {
+    if (left == null && right == null) {
+      return true;
+    }
+
+    if (left == null || right == null || left.getValue() != right.getValue()) {
       return false;
     }
 
-    if (root.getLeft() == null && root.getRight() != null) {
-      return false;
-    }
-
-    if (root.getLeft().getValue() != root.getLeft().getValue()) {
-      return false;
-    }
-
-    swapLeftAndRight(root.getRight());
-
-    List<Integer> list1 = preOrderTraversal(root.getLeft());
-    List<Integer> list2 = preOrderTraversal(root.getRight());
-
-    List<Integer> list3 = inorderTraversal(root.getLeft());
-    List<Integer> list4 = inorderTraversal(root.getRight());
-
-    List<Integer> list5 = postOrderTraversal(root.getLeft());
-    List<Integer> list6 = postOrderTraversal(root.getRight());
-
-    return list1.equals(list2) && list3.equals(list4) && list5.equals(list6);
+    return isSymmetric(left.getLeft(), right.getRight()) && isSymmetric(left.getRight(), right.getLeft());
   }
 
   public static List<Integer> preOrderTraversal(TreeNode root) {
