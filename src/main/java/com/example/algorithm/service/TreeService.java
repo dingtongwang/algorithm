@@ -19,6 +19,22 @@ public class TreeService {
     return Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight())) + 1;
   }
 
+  public static boolean isEqual(TreeNode treeA, TreeNode treeB) {
+    if ((treeA == null)) {
+      return treeB == null;
+    }
+
+    if (treeB == null) {
+      return false;
+    }
+
+    if (treeA.getValue() == treeB.getValue()) {
+      return isEqual(treeA.getLeft(), treeB.getLeft()) && isEqual(treeA.getRight(), treeB.getRight());
+    }
+
+    return false;
+  }
+
   /**
    * @description: 平衡树——左右子树高度差小于等于 1
    * @Param: [root]

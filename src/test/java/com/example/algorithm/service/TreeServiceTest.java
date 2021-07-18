@@ -44,6 +44,21 @@ class TreeServiceTest {
   }
 
   @Test
+  void should_return_correct_result_when_call_is_equal_given_the_same_tree() {
+    TreeNode treeA = createTree();
+    TreeNode treeB = createTree();
+    assertTrue(TreeService.isEqual(treeA, treeB));
+  }
+
+  @Test
+  void should_return_correct_result_when_call_is_equal_given_the_second_tree_without_right_tree() {
+    TreeNode treeA = createTree();
+    TreeNode treeB = createTree();
+    treeB.setRight(null);
+    assertFalse(TreeService.isEqual(treeA, treeB));
+  }
+
+  @Test
   void should_return_true_result_when_call_is_balanced() {
     assertTrue(TreeService.isBalanced(root));
   }
