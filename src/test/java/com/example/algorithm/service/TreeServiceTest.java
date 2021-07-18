@@ -35,6 +35,13 @@ class TreeServiceTest {
   }
 
   @Test
+  void should_return_correct_result_when_call_max_depth() {
+    int depth = TreeService.maxDepth(root);
+
+    assertEquals(4, depth);
+  }
+
+  @Test
   void should_return_correct_result_when_call_pre_order_traversal() {
     List<Integer> result = TreeService.preOrderTraversal(root);
 

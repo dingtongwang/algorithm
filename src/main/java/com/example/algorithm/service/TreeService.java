@@ -12,6 +12,13 @@ import java.util.List;
  **/
 public class TreeService {
 
+  public static int maxDepth(TreeNode root) {
+    if (root == null) {
+      return 0;
+    }
+    return Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight())) + 1;
+  }
+
   public static List<Integer> preOrderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList();
     preOrder(result, root);
