@@ -39,4 +39,18 @@ public class TreeService {
       inorder(result, node.getRight());
     }
   }
+
+  public static List<Integer> postOrderTraversal(TreeNode root) {
+    List<Integer> result = new ArrayList();
+    postOrder(result, root);
+    return result;
+  }
+
+  private static void postOrder(List<Integer> result, TreeNode node) {
+    if (node != null) {
+      postOrder(result, node.getLeft());
+      postOrder(result, node.getRight());
+      result.add(node.getValue());
+    }
+  }
 }
