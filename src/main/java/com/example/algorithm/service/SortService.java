@@ -132,4 +132,29 @@ public class SortService {
 
     return j;
   }
+
+  /**
+   * @description: 希尔排序是插入排序的一种，也称为缩小增量排序
+   * @Param: [nums]
+   * @return: void
+   * @author: tongwang.ding
+   * @date: 2021-07-18
+   */
+  public static void shellSort(int[] nums) {
+    int N = nums.length;
+
+    // 此处决定步长
+    for (int gap = N / 2; gap > 0; gap /= 2) {
+
+      // 对一个步长区间进行比较，[step, arr.length)
+      for (int i = gap; i < N; i++) {
+
+        for (int j = i; j >= gap && nums[j] < nums[j - gap]; j -= gap) {
+          int temp = nums[j];
+          nums[j] = nums[j - gap];
+          nums[j - gap] = temp;
+        }
+      }
+    }
+  }
 }

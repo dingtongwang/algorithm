@@ -1,8 +1,16 @@
 package com.example.algorithm.service;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class SortServiceTest {
+
+  private static int[] nums;
+
+  @BeforeAll
+  private static void initData() {
+    nums = new int[]{10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
+  }
 
   @Test
   void should_return_correct_data_list_when_call_insertion_sort() {
@@ -27,20 +35,27 @@ class SortServiceTest {
 
   @Test
   void should_return_correct_data_list_when_call_merge_sort() {
-    int[] data = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
-    SortService.mergeSort(data);
+    SortService.mergeSort(nums);
 
-    for (int num : data) {
+    for (int num : nums) {
       System.out.println(num);
     }
   }
 
   @Test
   void should_return_correct_data_list_when_call_quick_sort() {
-    int[] data = {10, 7, 2, 4, 7, 62, 3, 4, 2, 1, 8, 9, 19};
-    SortService.quickSort(data);
+    SortService.quickSort(nums);
 
-    for (int num : data) {
+    for (int num : nums) {
+      System.out.println(num);
+    }
+  }
+
+  @Test
+  void should_return_correct_data_list_when_call_shell_sort() {
+    SortService.shellSort(nums);
+
+    for (int num : nums) {
       System.out.println(num);
     }
   }
