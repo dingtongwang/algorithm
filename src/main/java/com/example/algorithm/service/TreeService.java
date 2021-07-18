@@ -14,15 +14,29 @@ public class TreeService {
 
   public static List<Integer> preOrderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList();
-    preorder(result, root);
+    preOrder(result, root);
     return result;
   }
 
-  private static void preorder(List<Integer> result, TreeNode node) {
+  private static void preOrder(List<Integer> result, TreeNode node) {
     if (node != null) {
       result.add(node.getValue());
-      preorder(result, node.getLeft());
-      preorder(result, node.getRight());
+      preOrder(result, node.getLeft());
+      preOrder(result, node.getRight());
+    }
+  }
+
+  public static List<Integer> inorderTraversal(TreeNode root) {
+    List<Integer> result = new ArrayList();
+    inorder(result, root);
+    return result;
+  }
+
+  private static void inorder(List<Integer> result, TreeNode node) {
+    if (node != null) {
+      inorder(result, node.getLeft());
+      result.add(node.getValue());
+      inorder(result, node.getRight());
     }
   }
 }
