@@ -49,6 +49,21 @@ class TreeServiceTest {
   }
 
   @Test
+  void should_return_true_result_when_call_swap_left_and_right() {
+    // Given
+    TreeNode tree = createTreeForSwapLeftAndRight();
+
+    // When
+    TreeNode result = TreeService.swapLeftAndRight(tree);
+
+    // Then
+    // 此处通过前序遍历、中序遍历、后序遍历的结果来验证
+    assertEquals(Arrays.asList(1, 2, 4, 3), TreeService.preOrderTraversal(result));
+    assertEquals(Arrays.asList(1, 4, 2, 3), TreeService.inorderTraversal(result));
+    assertEquals(Arrays.asList(4, 3, 2, 1), TreeService.postOrderTraversal(result));
+  }
+
+  @Test
   void should_return_false_result_when_call_is_balanced() {
     assertFalse(TreeService.isBalanced(createTree()));
   }
@@ -97,6 +112,15 @@ class TreeServiceTest {
     TreeNode node4 = new TreeNode(4);
 
     TreeNode node2 = new TreeNode(4, node3, node4);
+
+    return new TreeNode(1, node2, null);
+  }
+
+  private static TreeNode createTreeForSwapLeftAndRight() {
+    TreeNode node3 = new TreeNode(3);
+    TreeNode node4 = new TreeNode(4);
+
+    TreeNode node2 = new TreeNode(2, node3, node4);
 
     return new TreeNode(1, node2, null);
   }

@@ -45,6 +45,19 @@ public class TreeService {
     return Math.abs(l - r) <= 1;
   }
 
+  public static TreeNode swapLeftAndRight(TreeNode root) {
+    if (root != null) {
+      TreeNode temp = root.getLeft();
+      root.setLeft(root.getRight());
+      root.setRight(temp);
+
+      swapLeftAndRight(root.getLeft());
+      swapLeftAndRight(root.getRight());
+    }
+
+    return root;
+  }
+
   public static List<Integer> preOrderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList();
     preOrder(result, root);
