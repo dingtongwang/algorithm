@@ -74,6 +74,13 @@ public class TreeService {
     return root;
   }
 
+  /**
+   * @description: 判读树是否是对称树
+   * @Param: [root]
+   * @return: boolean
+   * @author: tongwang.ding
+   * @date: 2021-07-31
+   */
   public static boolean isSymmetric(TreeNode root) {
     if (root == null) {
       return true;
