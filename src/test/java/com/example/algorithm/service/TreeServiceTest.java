@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.algorithm.model.TreeNode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
@@ -117,6 +118,20 @@ class TreeServiceTest {
   @Test
   void should_return_false_result_when_call_is_symmetric_given_non_symmetric_tree() {
     assertFalse(TreeService.isSymmetric(createNonSymmetricTree()));
+  }
+
+  @Test
+  void should_return_false_result_when_call_level_order() {
+    ArrayList<ArrayList<Integer>> arrayLists = TreeService.levelOrder(root);
+//    arrayLists.forEach(this::printNodes);
+    assertEquals(1, arrayLists.get(0).size());
+    assertEquals(2, arrayLists.get(1).size());
+    assertEquals(4, arrayLists.get(2).size());
+    assertEquals(8, arrayLists.get(3).size());
+  }
+
+  private void printNodes(ArrayList<Integer> list) {
+    System.out.println(list);
   }
 
   private static TreeNode createTree() {

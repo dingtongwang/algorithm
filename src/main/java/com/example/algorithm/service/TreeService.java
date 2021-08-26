@@ -2,6 +2,7 @@ package com.example.algorithm.service;
 
 import com.example.algorithm.model.TreeNode;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -140,6 +141,47 @@ public class TreeService {
       postOrder(result, node.getLeft());
       postOrder(result, node.getRight());
       result.add(node.getValue());
+    }
+  }
+
+  /**
+   * @description: 水平遍历
+   * @Param: [root]
+   * @return: java.util.ArrayList<java.util.ArrayList<java.lang.Integer>>
+   * @author: tongwang.ding
+   * @date: 2021-08-27
+   */
+  public static ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+    // write code here
+    ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+    LinkedList<TreeNode> queue = new LinkedList<>();
+
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      ArrayList<Integer> levelNodes = new ArrayList<>();
+      int size = queue.size();
+      for (int i = 1; i <= size; i++) {
+        traversal(levelNodes, queue);
+      }
+      list.add(levelNodes);
+    }
+
+    return list;
+  }
+
+  private static void traversal(ArrayList<Integer> levelValues, LinkedList<TreeNode> queue) {
+    TreeNode node = queue.pop();
+    if (node != null) {
+      levelValues.add(node.getValue());
+
+      if (node.getLeft() != null) {
+        queue.add(node.getLeft());
+      }
+
+      if (node.getRight() != null) {
+        queue.add(node.getRight());
+      }
     }
   }
 }
